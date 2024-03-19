@@ -43,7 +43,7 @@ app.use('/api/v1/car', require('./routes/carRouter'));
 
 // view routes
 app.get('/', (req, res) => {
-    res.status(200).render('base');
+    res.status(200).send('hello');
 })
 
 // middeware error handle not matching route
