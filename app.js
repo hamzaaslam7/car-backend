@@ -3,7 +3,7 @@ const express = require('express');
 const cors = require('cors')
 const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
-// const mongoSanitize = require('express-mongo-sanitize');
+const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const hpp = require('hpp');
 const app = express();
@@ -26,7 +26,7 @@ app.use('/api', limiter);
 app.use(express.json({ limit: '10kb' }));
 
 // data sanitization against NoSql injection
-//app.use(mongoSanitize());
+app.use(mongoSanitize());
 
 // data sanitization against NoSql injection
 app.use(xss());
