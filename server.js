@@ -1,12 +1,11 @@
-const dotenv = require("dotenv");
-dotenv.config({ path: "./config.env" });
 const app = require("./app");
 const mongoose = require("mongoose");
-const keys = require("./config/key");
+require("dotenv").config();
 
 mongoose.Promise = global.Promise;
 mongoose.set('strictQuery', false);
-mongoose.connect(keys.mongoURI).then((con) => {
+console.log(process.env.mongoURI);
+mongoose.connect(process.env.mongoURI).then((con) => {
   console.log(":::::::::::::: Connection Success !!! :::::::::::::::::::");
 });
 

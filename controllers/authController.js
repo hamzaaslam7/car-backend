@@ -2,13 +2,12 @@ const User = require("../models/userModel");
 const { loginToken } = require("../helpers/authHelper");
 const catchAsync = require("../utils/catchAsync");
 const appError = require("../utils/appError");
-const keys = require("../config/key");
 
 const createSendToken = (user, statuscode, res) => {
   const token = loginToken(user._id);
   const cookieOption = {
     expires: new Date(
-      Date.now() + keys.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
+      Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
     ),
     httpOnly: true,
     sameSite: 'None',
