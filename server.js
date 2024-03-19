@@ -16,10 +16,10 @@ const server = app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
 
-process.on('unhandledRejection', err => {
-    console.log(err.name, err.message);
-    console.log('UnHandel rejection');
-    server.close(() => {
-        process.exit(1);
-    });
-});
+// process.on('unhandledRejection', err => {
+//     console.log(err.name, err.message);
+//     console.log('UnHandel rejection');
+//     server.close(() => {
+//         process.exit(1);
+//     });
+// });
