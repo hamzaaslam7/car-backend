@@ -1,11 +1,11 @@
 
 const express = require('express');
-const cors = require('cors')
-const rateLimit = require('express-rate-limit');
-const helmet = require('helmet');
+//const cors = require('cors')
+//const rateLimit = require('express-rate-limit');
+//const helmet = require('helmet');
 //const mongoSanitize = require('express-mongo-sanitize');
-const xss = require('xss-clean');
-const hpp = require('hpp');
+//const xss = require('xss-clean');
+//const hpp = require('hpp');
 const app = express();
 //const globalErrorHandel = require('./controllers/errorController');
 //const AppError = require('./utils/appError');
