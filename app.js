@@ -1,45 +1,45 @@
 
 const express = require('express');
-// const cors = require('cors')
-// const rateLimit = require('express-rate-limit');
-// const helmet = require('helmet');
-// const mongoSanitize = require('express-mongo-sanitize');
-// const xss = require('xss-clean');
-// const hpp = require('hpp');
+const cors = require('cors')
+const rateLimit = require('express-rate-limit');
+const helmet = require('helmet');
+const mongoSanitize = require('express-mongo-sanitize');
+const xss = require('xss-clean');
+const hpp = require('hpp');
 const app = express();
-//const globalErrorHandel = require('./controllers/errorController');
+const globalErrorHandel = require('./controllers/errorController');
 const AppError = require('./utils/appError');
 
-//app.use(cors())
+app.use(cors())
 // set security HTTP headers
-//app.use(helmet())
+app.use(helmet())
 
 // global middleware use 
-// const limiter = rateLimit({
-//     max: 100,
-//     windowMs: 60 * 60 * 1000,
-//     message:'To many request from this api , please try again in an hour,'
-// })
+const limiter = rateLimit({
+    max: 100,
+    windowMs: 60 * 60 * 1000,
+    message:'To many request from this api , please try again in an hour,'
+})
  // limit request for same api
-//app.use('/api', limiter);
+app.use('/api', limiter);
 // Body parser reading data from body into req.body
-//app.use(express.json({ limit: '10kb' }));
+app.use(express.json({ limit: '10kb' }));
 
 // data sanitization against NoSql injection
-//app.use(mongoSanitize());
+app.use(mongoSanitize());
 
 // data sanitization against NoSql injection
-//app.use(xss());
+app.use(xss());
 // prevent  parameter pollution
-// app.use(hpp({
-//     whitelist:['duration']
-// }));
+app.use(hpp({
+    whitelist:['duration']
+}));
 
 // serving static file
-//app.use(express.static('./public'));
+app.use(express.static('./public'));
 
-//app.use('/api/v1/auth', require('./routes/authRouter'));
-//app.use('/api/v1/car', require('./routes/carRouter'));
+app.use('/api/v1/auth', require('./routes/authRouter'));
+app.use('/api/v1/car', require('./routes/carRouter'));
 
 // view routes
 app.get('/', (req, res) => {
@@ -52,6 +52,6 @@ app.all('*', (req, res, next) => {
 });
 
 // Global error handle middaware
-//app.use(globalErrorHandel);
+app.use(globalErrorHandel);
 
 module.exports = app;
