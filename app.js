@@ -35,8 +35,7 @@ app.use(hpp({
     whitelist:['duration']
 }));
 
-// serving static file
-app.use(express.static('./public'));
+
 
 //app.use('/api/v1/auth', require('./routes/authRouter'));
 //app.use('/api/v1/car', require('./routes/carRouter'));
