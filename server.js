@@ -1,13 +1,13 @@
 const dotenv = require("dotenv");
 dotenv.config({ path: "./config.env" });
 const app = require("./app");
-//const mongoose = require("mongoose");
+const mongoose = require("mongoose");
 //const keys = require("./config/key");
 
 
-// mongoose.connect("mongodb+srv://hamza:p9kmTfuAjUngXVem@cluster0.rbauogk.mongodb.net/carServiceDb?retryWrites=true&w=majority&appName=Cluster0").then((con) => {
-//   console.log(":::::::::::::: Connection Success !!! :::::::::::::::::::");
-// });
+mongoose.connect("mongodb+srv://hamza:p9kmTfuAjUngXVem@cluster0.rbauogk.mongodb.net/carServiceDb?retryWrites=true&w=majority&appName=Cluster0").then((con) => {
+  console.log(":::::::::::::: Connection Success !!! :::::::::::::::::::");
+});
 
 
 const port = process.env.PORT || 4000;
