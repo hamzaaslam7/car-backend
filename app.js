@@ -7,8 +7,8 @@ const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const hpp = require('hpp');
 const app = express();
-const globalErrorHandel = require('./controllers/errorController');
-const AppError = require('./utils/appError');
+//const globalErrorHandel = require('./controllers/errorController');
+//const AppError = require('./utils/appError');
 
 app.use(cors())
 // set security HTTP headers
@@ -38,8 +38,8 @@ app.use(hpp({
 // serving static file
 app.use(express.static('./public'));
 
-app.use('/api/v1/auth', require('./routes/authRouter'));
-app.use('/api/v1/car', require('./routes/carRouter'));
+//app.use('/api/v1/auth', require('./routes/authRouter'));
+//app.use('/api/v1/car', require('./routes/carRouter'));
 
 // view routes
 app.get('/', (req, res) => {
@@ -48,10 +48,10 @@ app.get('/', (req, res) => {
 
 // middeware error handle not matching route
 app.all('*', (req, res, next) => {
-    next(new AppError(`can not find ${req.originalUrl} on this server `,400));
+   // next(new AppError(`can not find ${req.originalUrl} on this server `,400));
 });
 
 // Global error handle middaware
-app.use(globalErrorHandel);
+//app.use(globalErrorHandel);
 
 module.exports = app;
