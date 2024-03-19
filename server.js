@@ -2,9 +2,7 @@ const app = require("./app");
 const mongoose = require("mongoose");
 require("dotenv").config();
 
-mongoose.Promise = global.Promise;
-mongoose.set('strictQuery', false);
-console.log(process.env.mongoURI);
+
 mongoose.connect(process.env.mongoURI).then((con) => {
   console.log(":::::::::::::: Connection Success !!! :::::::::::::::::::");
 });
