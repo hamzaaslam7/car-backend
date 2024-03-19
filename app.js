@@ -10,30 +10,30 @@ const app = express();
 //const globalErrorHandel = require('./controllers/errorController');
 //const AppError = require('./utils/appError');
 
-app.use(cors())
-// set security HTTP headers
-app.use(helmet())
+// app.use(cors())
+// // set security HTTP headers
+// app.use(helmet())
 
-// global middleware use 
-const limiter = rateLimit({
-    max: 100,
-    windowMs: 60 * 60 * 1000,
-    message:'To many request from this api , please try again in an hour,'
-})
- // limit request for same api
-app.use('/api', limiter);
-// Body parser reading data from body into req.body
-app.use(express.json({ limit: '10kb' }));
+// // global middleware use 
+// const limiter = rateLimit({
+//     max: 100,
+//     windowMs: 60 * 60 * 1000,
+//     message:'To many request from this api , please try again in an hour,'
+// })
+//  // limit request for same api
+// app.use('/api', limiter);
+// // Body parser reading data from body into req.body
+// app.use(express.json({ limit: '10kb' }));
 
-// data sanitization against NoSql injection
-app.use(mongoSanitize());
+// // data sanitization against NoSql injection
+// app.use(mongoSanitize());
 
-// data sanitization against NoSql injection
-app.use(xss());
-// prevent  parameter pollution
-app.use(hpp({
-    whitelist:['duration']
-}));
+// // data sanitization against NoSql injection
+// app.use(xss());
+// // prevent  parameter pollution
+// app.use(hpp({
+//     whitelist:['duration']
+// }));
 
 
 
